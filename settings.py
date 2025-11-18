@@ -30,3 +30,13 @@ class Settings:
         self.bullet_amount = 15
 
         self.ship_side = "left"  
+
+        
+        self.alien_file = Path.cwd() / 'Assets' /  'images'   / 'enemy_4.png'
+        self.fleet_speed = 1
+        self.alien_w = 40
+        self.alien_h = 40
+        self.fleet_direction = 1
+        self.fleet_drop_speed = 25
+        self.alien_side = "right"
+
