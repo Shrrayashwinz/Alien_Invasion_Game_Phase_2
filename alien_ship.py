@@ -1,5 +1,5 @@
 """
-Program Name: alien_ship.py
+Program Name: hero_ship.py
 
 Author: Shrrayash Srinivasan
 
