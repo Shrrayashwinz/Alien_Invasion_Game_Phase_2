@@ -67,7 +67,7 @@ class AlienInvasion:
             elif event.type == pygame.KEYUP:
                 self._check_keyup_events(event)
 
-    def _check_keyup_events(self, event):
+    def _check_keyup_events(self, event): 
         if event.key == pygame.K_KP_8:
             self.alien_ship.moving_up = False
         elif event.key == pygame.K_KP_2:
