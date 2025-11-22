@@ -89,7 +89,7 @@ class AlienFleet:
      
      def _drop_alien_fleet(self):
           for alien in self.fleet:
-              alien.y += self.fleet_drop_speed
+              alien.x += self.fleet_drop_speed
 
      def update_fleet(self):
           self._check_fleet_edges()
@@ -107,7 +107,7 @@ class AlienFleet:
      def check_fleet_bottom(self):
           alien: Alien
           for alien in self.fleet:
-               if alien.rect.bottom >= self.settings.screen_h:
+               if alien.rect.right >= self.settings.screen_w:
                     return True
                return False
      
