@@ -3,8 +3,8 @@ Program Name: hero_ship.py
 
 Author: Shrrayash Srinivasan
 
-Purpose: Handles the alien ship initialization, movement, drawing, and firing processors for the Alien Invasion game.
-Integrates with the Arsenal class and ensures the ship faces the center of the screen.
+Purpose: Handles the hero ship initialization, movement, drawing, and firing processors for the Alien Invasion game.
+Integrates with the Arsenal class and ensures the ship faces the center of the screen at the right side.
 
 Date: November 21, 2025
 """
@@ -18,6 +18,7 @@ if TYPE_CHECKING:
 
 class Ship:
     def __init__(self, game: 'AlienInvasion', arsenal: 'Arsenal', side='left'):
+        super().__init__()
         self.game = game
         self.settings = game.settings
         self.screen = game.screen
@@ -72,4 +73,15 @@ class Ship:
             self._center_ship()
             return True
         return False
+
+
+    def _center_ship(self):
+        """Re-center ship vertically after collision."""
+
+        self.rect.centery = self.boundaries.centery
+        self.y = float(self.rect.y)
+        if self.side == "left":
+            self.rect.left = 0
+        elif self.side == "right":
+            self.rect.right = self.boundaries.right
 

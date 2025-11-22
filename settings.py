@@ -1,5 +1,5 @@
 """
-Program Name: Lab12_pcarswel_Shrrayash_1.py
+Program Name: settings.py
 Author: Shrrayash Srinivasan
 Purpose: Defined settings for the Alien Invasion game, including screen dimensions, asset paths, ship and bullet behavior, 
 and initial ship placements. 
@@ -10,18 +10,26 @@ from pathlib import Path
 
 class Settings:
     def __init__(self):
+        ''' General game settings''' 
+
         self.name: str = 'Alien Invasion'
         self.screen_w = 1200
         self.screen_h = 800
         self.FPS = 60
 
+        '''Background of the game'''
+
         self.bg_file = Path.cwd() / 'Assets' / 'images' / 'Starbasesnow.png'
+
+        '''Hero ship settings'''
 
         self.hero_ship_file = Path.cwd() / 'Assets' / 'images' / 'ship2(no bg).png'
         self.hero_ship_w = 40
         self.hero_ship_h = 60
         self.hero_ship_speed = 4
         self.starting_hero_ship_count = 4
+
+        '''Bullet class settings'''
 
 
         self.bullet_file = Path.cwd() / 'Assets' / 'images' / 'laserBlast.png'
@@ -34,6 +42,8 @@ class Settings:
 
         self.ship_side = "left"  
 
+
+        '''Alien fleet settings'''
         
         self.alien_file = Path.cwd() / 'Assets' /  'images'   / 'enemy_4.png'
         self.fleet_speed = 1

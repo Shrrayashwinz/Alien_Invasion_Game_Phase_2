@@ -13,6 +13,7 @@ import sys
 import pygame
 from settings import Settings
 from hero_ship import Ship
+from game_stats import GameStats
 from arsenal import Arsenal 
 from alien_fleet import AlienFleet
 from time import sleep
@@ -22,6 +23,9 @@ class AlienInvasion:
     def __init__(self):
         pygame.init()
         self.settings = Settings()
+
+        self.game_stats = GameStats(self.settings.starting_hero_ship_count)
+
 
         self.screen = pygame.display.set_mode(
             (self.settings.screen_w, self.settings.screen_h)
@@ -38,12 +42,12 @@ class AlienInvasion:
 
         pygame.mixer.init()
         self.laser_sound = pygame.mixer.Sound(self.settings.laser_sound)
-        self.laser_sound.set_volume(1.7)
+        self.laser_sound.set_volume(0.75)
 
         self.impact_sound = pygame.mixer.Sound(self.settings.impact)
         self.impact_sound.set_volume(0.7)
 
-        
+
         self.hero_ship = Ship(self, Arsenal(self), side='right')
         self.alien_fleet = AlienFleet(self)
         self.alien_fleet.create_fleet()
@@ -57,7 +61,6 @@ class AlienInvasion:
                self.hero_ship.update()
                self.alien_fleet.update_fleet()
                self._check_collisions()
-               self._check_events()
             self._update_screen()
             self.clock.tick(self.settings.FPS)
 
