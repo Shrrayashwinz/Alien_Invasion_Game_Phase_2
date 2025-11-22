@@ -17,10 +17,10 @@ class Settings:
 
         self.bg_file = Path.cwd() / 'Assets' / 'images' / 'Starbasesnow.png'
 
-        self.alien_ship_file = Path.cwd() / 'Assets' / 'images' / 'ship2(no bg).png'
-        self.alien_ship_w = 40
-        self.alien_ship_h = 60
-        self.alien_ship_speed = 4
+        self.hero_ship_file = Path.cwd() / 'Assets' / 'images' / 'ship2(no bg).png'
+        self.hero_ship_w = 40
+        self.hero_ship_h = 60
+        self.hero_ship_speed = 4
 
         self.bullet_file = Path.cwd() / 'Assets' / 'images' / 'laserBlast.png'
         self.laser_sound = Path.cwd() / 'Assets' / 'sound' / 'laser.mp3'

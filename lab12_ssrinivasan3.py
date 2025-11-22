@@ -12,9 +12,11 @@ Date: November 21, 2025
 import sys
 import pygame
 from settings import Settings
-from alien_ship import Ship
+from hero_ship import Ship
 from arsenal import Arsenal 
 from alien_fleet import AlienFleet
+from time import sleep
+
 
 class AlienInvasion:
     def __init__(self):
@@ -47,19 +49,38 @@ class AlienInvasion:
     def run_game(self):
         while self.running:
             self._check_events()
-            self.alien_ship.update()
-            self.alien_fleet.update_fleet()
-            self._check_collisions()
-            self._check_events()
+            if self.game_active:
+
+               self.hero_ship.update()
+               self.alien_fleet.update_fleet()
+               self._check_collisions()
+               self._check_events()
             self._update_screen()
             self.clock.tick(self.settings.FPS)
 
     def _check_collisions(self):
-        if self.alien_ship_ship.check_collisions(self.alien_fleet.fleet):
+        if self.hero_ship_ship.check_collisions(self.alien_fleet.fleet):
             self._reset_level()
 
 
-        collisions = self.alien_fleet.check_collisions(self.alien_ship.arsenal.arsenal)
+        collisions = self.alien_fleet.check_collisions(self.hero_ship.arsenal.arsenal)
+        if collisions:
+            self.impact_sound.play()
+            self.impact_sound.fadeout(1000)
+        
+        if self.alien_fleet.check_destroyed_status():
+            self._reset_level()
+            sleep(1.5)
+
+    def _check_game_status(self):
+        if self.game_stats.hero_ships_left > 0:
+            self.game_stats.hero_ships_left -= 1
+            self._reset_level()
+
+            print(self.game_stats.hero_ships_left)
+        
+        else:
+          self.game_active = False
     
 
     def _reset_level(self):
@@ -69,8 +90,11 @@ class AlienInvasion:
 
     def _update_screen(self):
         self.screen.blit(self.bg, (0, 0))
-        self.alien_ship.draw()
+        self.hero_ship.draw()
+        self.alien_fleet.draw()
+        pygame.display.flip()
 
+        
     def _reset_level(self):
         self.hero_ship.arsenal.arsenal.empty()
         self.alien_fleet.fleet.empty()

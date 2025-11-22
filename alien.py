@@ -15,10 +15,10 @@ from pygame.sprite import Sprite
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-     from lab12_ssrinivasan3 import AlienInvasion
+     from alien_fleet import AlienFleet
 
 class Alien(Sprite):
-     def __init__(self, game: 'AlienInvasion', y: float, x: float):
+     def __init__(self, fleet: 'AlienFleet', y: float, x: float):
           super().__init__()
           self.fleet = fleet
           self.screen = fleet.game.screen

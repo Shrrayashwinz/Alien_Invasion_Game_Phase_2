@@ -25,9 +25,9 @@ class Ship:
         self.side = side
         self.arsenal = arsenal
 
-        self.image = pygame.image.load(self.settings.alien_ship_file)
+        self.image = pygame.image.load(self.settings.hero_ship_file)
         self.image = pygame.transform.scale(
-            self.image, (self.settings.alien_ship_w, self.settings.alien_ship_h)
+            self.image, (self.settings.hero_ship_w, self.settings.hero_ship_h)
         )
 
         if side == "left":
@@ -51,7 +51,7 @@ class Ship:
         self.arsenal.update_arsenal()
 
     def _update_ship_movement(self):
-        temp_speed = self.settings.alien_ship_speed
+        temp_speed = self.settings.hero_ship_speed
 
         if self.moving_up and self.rect.top > self.boundaries.top:
             self.y -= temp_speed
