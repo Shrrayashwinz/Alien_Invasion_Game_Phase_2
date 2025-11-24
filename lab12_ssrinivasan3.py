@@ -15,7 +15,7 @@ from settings import Settings
 from hero_ship import Ship
 from game_stats import GameStats
 from arsenal import Arsenal 
-from alien_fleet import AlienFleet
+from alien_navy import AlienFleet
 from time import sleep
 
 
@@ -43,6 +43,8 @@ class AlienInvasion:
         self.running = True
         self.clock = pygame.time.Clock()
 
+        """The noises for the game."""
+
         pygame.mixer.init()
         self.laser_sound = pygame.mixer.Sound(self.settings.laser_sound)
         self.laser_sound.set_volume(0.75)
@@ -58,6 +60,8 @@ class AlienInvasion:
 
 
     def run_game(self):
+        """Starts the main game loop"""
+
         while self.running:
             self._check_events()
             if self.game_active:
@@ -69,6 +73,9 @@ class AlienInvasion:
             self.clock.tick(self.settings.FPS)
 
     def _check_collisions(self):
+        """Checks for collisions between the hero ship,the alien navy from the Alien Nation and the bullets
+        fired by the hero ship."""
+
         if self.hero_ship.check_collisions(self.alien_fleet.fleet):
             self._check_game_status()
             if self.game_active:
@@ -86,10 +93,13 @@ class AlienInvasion:
 
         if self.alien_fleet.check_destroyed_status():
             self._reset_level()
-            sleep(1.5)
+            sleep(0.5)
        
 
     def _check_game_status(self):
+        """What happens should the hero ship lose a life. Game ends when no lives are left."""
+
+
         if self.game_stats.hero_ships_left > 0: 
             self.game_stats.hero_ships_left -= 1
             self._reset_level()
@@ -103,11 +113,13 @@ class AlienInvasion:
     
 
     def _reset_level(self):
+        """Reset level by recreating alien fleet."""
         self.hero_ship.arsenal.arsenal.empty()
         self.alien_fleet.fleet.empty()
         self.alien_fleet.create_fleet()
 
     def _update_screen(self):
+        """Remake background and the other objects."""
         self.screen.blit(self.bg, (0, 0))
         self.hero_ship.draw()
         self.alien_fleet.draw()
@@ -115,6 +127,7 @@ class AlienInvasion:
       
 
     def _check_events(self):
+        """Involves the keys involved with operating the ship and what to do to quit the game."""
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.running = False

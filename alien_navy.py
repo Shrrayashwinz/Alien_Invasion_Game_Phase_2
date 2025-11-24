@@ -1,9 +1,10 @@
 """
-Program Name: alien_fleet.py
+Program Name: alien_navy.py
 
 Author: Shrrayash Srinivasan
 
-Purpose: Handles the alien fleet movement when the hit boundaries and when they need to move as they hit boundaries.
+Purpose: Defines the AlienFleet class, which manages the creation, movement, collision detection, and rendering of a fleet of aliens 
+in the Alien Invasion game.
 
 Date: November 21, 2025
 """
@@ -16,6 +17,7 @@ if TYPE_CHECKING:
      from lab12_ssrinivasan3 import AlienInvasion
 
 class AlienFleet:
+     """Manages the fleet of the aliens in the alien invasion game."""
      def __init__(self, game: 'AlienInvasion'):
           self.game = game
           self.settings = game.settings
@@ -28,6 +30,7 @@ class AlienFleet:
     
 
      def create_fleet(self):
+          """Create a fleet of aliens arranged in a grid formation."""
           alien_w = self.settings.alien_w
           alien_h = self.settings.alien_h
           screen_w = self.settings.screen_w
@@ -49,6 +52,7 @@ class AlienFleet:
                  self._create_alien(current_x, current_y)
 
      def calculate_offsets(self, alien_w, alien_h, screen_w, fleet_w, fleet_h):
+         """Calculate horizontal and vertical offsets to center the fleet on screen."""
          half_screen = self.settings.screen_h//2
          fleet_horizontal_space = fleet_w * alien_w
          fleet_vertical_space = fleet_h * alien_h
@@ -57,6 +61,7 @@ class AlienFleet:
          return x_offset,y_offset
 
      def calculate_fleet_size(self, alien_w, screen_w, alien_h, screen_h):
+         """Calculates the fleet size so that it fits the screen"""        
          fleet_w = (screen_w//alien_w) - 1
          fleet_h = ((screen_h/2)//alien_h) + 1
 
@@ -103,6 +108,7 @@ class AlienFleet:
                alien.draw_alien()
      
      def check_collisions(self, other_group):
+          """WHat to do when the alien fleet collides with a bullet or the hero ship."""
           return pygame.sprite.groupcollide(self.fleet, other_group, True, True)
      
 
@@ -114,4 +120,5 @@ class AlienFleet:
                return False
      
      def check_destroyed_status(self):
+          """Returns should the fleet be entirely destroyed."""
           return not self.fleet

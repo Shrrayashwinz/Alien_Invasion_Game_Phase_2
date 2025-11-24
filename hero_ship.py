@@ -17,6 +17,7 @@ if TYPE_CHECKING:
     from lab12_ssrinivasan3 import AlienInvasion
 
 class Ship:
+    """Manages the hero ship's stats, initialization, movement, bullets, and collision detection."""
     def __init__(self, game: 'AlienInvasion', arsenal: 'Arsenal', side='left'):
         super().__init__()
         self.game = game
@@ -48,10 +49,12 @@ class Ship:
         self.y = float(self.rect.y)
 
     def update(self):
+        """Update ship position and arsenal state."""
         self._update_ship_movement()
         self.arsenal.update_arsenal()
 
     def _update_ship_movement(self):
+        """Adjust ship's vertical position based on movement flags and speed."""
         temp_speed = self.settings.hero_ship_speed
 
         if self.moving_up and self.rect.top > self.boundaries.top:
@@ -62,6 +65,7 @@ class Ship:
         self.rect.y = self.y
 
     def draw(self):
+        """Draw the ship and its bullets on the screen."""
         self.arsenal.draw()
         self.screen.blit(self.image, self.rect)
 

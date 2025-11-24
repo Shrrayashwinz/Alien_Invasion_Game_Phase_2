@@ -3,7 +3,8 @@ Program Name: alien.py
 
 Author: Shrrayash Srinivasan
 
-Purpose: Got the alien class set up.
+Purpose: Got the alien class set up. Each alien is a sprite that can move to the right, check screen boundaries, 
+and be drawn on the screen.
 
 Date: November 18, 2025
 """
@@ -12,7 +13,7 @@ from pygame.sprite import Sprite
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-     from alien_fleet import AlienFleet
+     from alien_navy import AlienFleet
 
 class Alien(Sprite):
      def __init__(self, fleet: 'AlienFleet', y: float, x: float, side='right'):
@@ -43,6 +44,7 @@ class Alien(Sprite):
         self.rect.x = self.x
      
      def check_edges(self):
+         """Done to ensure no alien ship is breaching the bottom/top edges of the screen."""
          return (self.rect.bottom >= self.boundaries.bottom or self.rect.top <= self.boundaries.top) 
 
 
