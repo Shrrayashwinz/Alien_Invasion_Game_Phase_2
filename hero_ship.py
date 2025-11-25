@@ -89,3 +89,6 @@ class Ship:
         elif self.side == "right":
             self.rect.right = self.boundaries.right
 
+        
+
+
