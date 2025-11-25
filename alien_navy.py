@@ -95,7 +95,6 @@ class AlienFleet:
      
      def _shift_fleet_right(self):
           for alien in self.fleet:
-              alien.rect.x += self.fleet_speed
               alien.x += self.fleet_speed
 
      def update_fleet(self):

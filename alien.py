@@ -16,6 +16,8 @@ if TYPE_CHECKING:
      from alien_navy import AlienFleet
 
 class Alien(Sprite):
+     """Manages the alien position and settings and behavior in the alien invasion game."""
+
      def __init__(self, fleet: 'AlienFleet', y: float, x: float, side='right'):
           super().__init__()
           self.fleet = fleet
@@ -38,6 +40,7 @@ class Alien(Sprite):
           self.x = float(self.rect.x)
 
      def update(self):
+        """Udate alien's position based on the fleet's direction."""
         vertical_speed = self.settings.fleet_speed         
         self.y += vertical_speed * self.fleet.fleet_direction
         self.rect.y = self.y
