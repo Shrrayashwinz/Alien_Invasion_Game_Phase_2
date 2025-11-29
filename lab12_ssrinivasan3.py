@@ -15,8 +15,9 @@ from settings import Settings
 from hero_ship import Ship
 from game_stats import GameStats
 from arsenal import Arsenal 
-from alien_navy import AlienFleet
+from alien_fleet import AlienFleet
 from time import sleep
+from button import Button
 
 
 class AlienInvasion:
@@ -56,7 +57,9 @@ class AlienInvasion:
         self.hero_ship = Ship(self, Arsenal(self), side='right')
         self.alien_fleet = AlienFleet(self)
         self.alien_fleet.create_fleet()
-        self.game_active = True
+
+        self.play_button = Button(self, "Play")
+        self.game_active = False
 
 
     def run_game(self):
@@ -114,12 +117,28 @@ class AlienInvasion:
         self.hero_ship.arsenal.arsenal.empty()
         self.alien_fleet.fleet.empty()
         self.alien_fleet.create_fleet()
+    
+    def restart_game(self):
+        #self.settings.initialize_dynamic_settings()
+        self._reset_level()
+        self.hero_ship._center_ship()
+        self.game_active = True
+        pygame.mouse.set_visible(False)
+
+        if not self.game_active:
+            self.play_button.draw()
+            pygame.mouse.set_visible(True)
 
     def _update_screen(self):
         """Remake background and the other objects."""
         self.screen.blit(self.bg, (0, 0))
         self.hero_ship.draw()
         self.alien_fleet.draw()
+
+        if not self.game_active:
+            self.play_button.draw()
+            pygame.mouse.set_visible(True)
+            
         pygame.display.flip()
       
 
@@ -134,6 +153,14 @@ class AlienInvasion:
                 self._check_keydown_events(event)
             elif event.type == pygame.KEYUP:
                 self._check_keyup_events(event)
+            
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+               self._check_button_clicked()
+    
+    def _check_button_clicked(self):
+        mouse_pos = pygame.mouse.get_pos()
+        if self.play_button.check_clicked(mouse_pos):
+          self.restart_game()
 
     def _check_keyup_events(self, event): 
         if event.key == pygame.K_t:
