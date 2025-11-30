@@ -21,7 +21,7 @@ from button import Button
 
 
 class AlienInvasion:
-    """This is the main control that manages the Alien Invasion game.
+    """This is the main control that managez the Alien Invasion game.
     
     """
     def __init__(self):
