@@ -51,5 +51,8 @@ class Bullet(Sprite):
         self.rect.x = self.x
 
     def draw_bullet(self):
+        """Draw the bullet to the screen."""
         self.screen.blit(self.image, self.rect)
+
+
 
