@@ -1,7 +1,7 @@
 """
 Program Name: alien_fleet.py
 
-Author: Shrrayash Srinivasan and Kaden Breinholt <3 (pals)
+Author: Shrrayash Srinivasan
 
 Purpose: Defines the AlienFleet class, which manages the creation, movement, collision detection, and rendering of a fleet of aliens
 in the Alien Invasion game.
