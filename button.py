@@ -5,7 +5,7 @@ Author: Shrrayash Srinivasan
 
 Purpose: Button. This will initialize the button class for the Alien Invasion game which will be used to start the game.
 
-Date: November 28, 2025     
+Date: November 28, 2025
 """
 import pygame.font
 from typing import TYPE_CHECKING
@@ -27,14 +27,14 @@ class Button:
         self.rect = pygame.Rect(0, 0, self.settings.button_w, self.settings.button_h)
         self.rect.center = self.boundaries.center
         self._prep_msg(msg)
-    
+
     """Render message text"""
-    
+
     def _prep_msg(self, msg):
-        self.msg_image = self.font.render(msg, True, self.settings.text_color, None) 
+        self.msg_image = self.font.render(msg, True, self.settings.text_color, None)
         self.msg_image_rect = self.msg_image.get_rect()
         self.msg_image_rect.center = self.rect.center
-    
+
 
     def draw(self):
 
@@ -43,10 +43,9 @@ class Button:
 
         self.screen.fill(self.settings.button_color, self.rect)
         self.screen.blit(self.msg_image, self.msg_image_rect)
-    
+
     def check_clicked(self, mouse_pos):
 
         """ Returns True if the button is clicked, else False."""
         return self.rect.collidepoint(mouse_pos)
 
-    

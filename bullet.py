@@ -11,7 +11,7 @@ Date: November 16, 2025
 
 import pygame
 from pygame.sprite import Sprite
-from typing import TYPE_CHECKING 
+from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from lab12_ssrinivasan3 import AlienInvasion
@@ -29,14 +29,14 @@ class Bullet(Sprite):
             (self.settings.bullet_w, self.settings.bullet_h)
         )
 
-        if direction == 1:   
+        if direction == 1:
             self.image = pygame.transform.rotate(self.image, -90)
-        else:      
+        else:
             self.image = pygame.transform.rotate(self.image, 90)
 
         self.rect = self.image.get_rect(center=position)
         if direction == 1:
-            self.rect.left = position[0] 
+            self.rect.left = position[0]
         else:
             self.rect.right = position[0]
 
@@ -53,6 +53,19 @@ class Bullet(Sprite):
     def draw_bullet(self):
         """Draw the bullet to the screen."""
         self.screen.blit(self.image, self.rect)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

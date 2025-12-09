@@ -90,6 +90,16 @@ class Ship:
             self.rect.right = self.boundaries.right
 
 
+        
+
+
+
+
+        
+
+
+
+
 
 
 
