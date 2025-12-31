@@ -8,7 +8,7 @@ Purpose:
     This includes screen dimensions, asset paths, ship and bullet behavior,
     alien fleet properties, button styling, and difficulty scaling.
 
-Date: November 16, 2025
+Date: December 16, 2025
 """
 
 from pathlib import Path
