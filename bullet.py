@@ -14,7 +14,7 @@ from pygame.sprite import Sprite
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from lab12_ssrinivasan3 import AlienInvasion
+    from alien_invasion import AlienInvasion
 
 class Bullet(Sprite):
     """Bullet class to manage bullets fired by the player's ship."""

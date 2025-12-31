@@ -14,7 +14,7 @@ from bullet import Bullet
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from lab12_ssrinivasan3 import AlienInvasion
+    from alien_invasion import AlienInvasion
 
 class Arsenal:
     """Manages the collection of bullets fired by the player's ship in the Alien Invasion game."""

@@ -14,7 +14,7 @@ from typing import TYPE_CHECKING
 from arsenal import Arsenal
 
 if TYPE_CHECKING:
-    from lab12_ssrinivasan3 import AlienInvasion
+    from alien_invasion import AlienInvasion
 
 class Ship:
     """Manages the hero ship's stats, initialization, movement, bullets, and collision detection."""

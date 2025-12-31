@@ -12,7 +12,7 @@ from typing import TYPE_CHECKING
 
 
 if TYPE_CHECKING:
-    from lab12_ssrinivasan3 import AlienInvasion
+    from alien_invasion import AlienInvasion
 
 class Button:
     """ This class will manage the button for the Alien Invasion game."""

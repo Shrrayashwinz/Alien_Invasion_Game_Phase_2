@@ -14,7 +14,7 @@ from typing import TYPE_CHECKING
 from alien import Alien
 
 if TYPE_CHECKING:
-     from lab12_ssrinivasan3 import AlienInvasion
+     from alien_invasion import AlienInvasion
 
 
 class AlienFleet:
